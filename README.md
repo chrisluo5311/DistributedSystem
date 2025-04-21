@@ -22,5 +22,6 @@ The project uses the `jslp` library to implement SLP functionality.
 | `net.sourceforge.jslp:jslp` | `1.0.0.RC5`   | System |
 
 ## How to Run
-1. Run the PrinterSA class to advertise services
-2. Run the PrinterUA class to discover services
+1. Replace `${project.basedir}` with the actual path to `jslp-1.0.0.RC5.jar` in the `pom.xml` file.
+2. Run the PrinterSA class to advertise services
+3. Run the PrinterUA class to discover services

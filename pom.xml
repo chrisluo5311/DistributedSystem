@@ -21,7 +21,7 @@
       <artifactId>jslp</artifactId>
       <version>1.0.0.RC5</version>
       <scope>system</scope>
-      <systemPath>/Users/luojidong/程式/DistributedSystem/lib/jslp-1.0.0.RC5.jar</systemPath>
+      <systemPath>${project.basedir}/lib/jslp-1.0.0.RC5.jar</systemPath>
     </dependency>
 
   </dependencies>
