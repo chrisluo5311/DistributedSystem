@@ -15,7 +15,15 @@
   </properties>
 
   <dependencies>
+    <!-- junit for @Test -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.11.4</version>
+      <scope>test</scope>
+    </dependency>
 
+    <!-- jslp test -->
     <dependency>
       <groupId>net.sourceforge.jslp</groupId>
       <artifactId>jslp</artifactId>

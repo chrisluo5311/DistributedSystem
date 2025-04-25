@@ -1,4 +1,4 @@
-package org.example;
+package org.example.jslp;
 import ch.ethz.iks.slp.*;
 
 import java.util.HashSet;
