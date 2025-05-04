@@ -1,4 +1,4 @@
-package org.example.dis_db;
+package org.example.inclass.dis_db;
 
 import java.net.*;
 import java.io.*;

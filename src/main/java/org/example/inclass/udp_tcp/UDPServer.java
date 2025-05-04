@@ -1,4 +1,4 @@
-package org.example.udp_tcp;
+package org.example.inclass.udp_tcp;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
