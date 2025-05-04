@@ -3,6 +3,7 @@ package org.example.tenet;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 
 /**
  *
@@ -21,6 +22,7 @@ public class MyWebServer {
         // parse command line arguments
         // e.g., java MyWebServer -document_root "/home/you/files" -port 8888
         if (args.length != 4) {
+            Log.error("Invalid number of arguments");
             System.err.println("Please use: java MyWebServer -document_root <path> -port <port>");
             System.exit(1);
         }
@@ -32,26 +34,25 @@ public class MyWebServer {
                 try {
                     port = Integer.parseInt(args[i + 1]);
                 } catch (NumberFormatException e) {
+                    Log.error("Port is not a number");
                     System.err.println("Port must be a number");
                     System.exit(1);
                 }
             } else {
+                Log.error("Unknown argument: " + args[i]);
                 System.err.println("Unknown argument: " + args[i]);
                 System.exit(1);
             }
         }
 
-        System.out.println("Document root: " + docRoot);
-        System.out.println("Port: " + port);
-        System.out.println("Starting web server...");
-
         // Init socket and start listening
         try (ServerSocket socket = new ServerSocket(port)) {
+            Log.info("Waiting for connection on port " + port + "...");
             while(true) {
                 // accept incoming connections
-                Socket responseSocket = socket.accept();
-
-                ClientHandler clientHandler = new ClientHandler(responseSocket, docRoot);
+                Socket clientSocket = socket.accept();
+                Log.info("Accepted connection from " + clientSocket.getRemoteSocketAddress());
+                ClientHandler clientHandler = new ClientHandler(clientSocket, docRoot);
                 new Thread(clientHandler).start();
             }
         } catch (IOException e) {

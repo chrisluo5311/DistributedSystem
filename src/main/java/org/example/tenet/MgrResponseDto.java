@@ -2,7 +2,6 @@ package org.example.tenet;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.PrintStream;
 import java.io.PrintWriter;
 
 public class MgrResponseDto {
@@ -11,26 +10,27 @@ public class MgrResponseDto {
     private OutputStream out;
     private byte[] body;
 
-    public static void success(OutputStream out, byte[] body) {
+    public static void success(OutputStream out, String contentType, byte[] body) {
         PrintWriter writer = new PrintWriter(out);
-        writer.println("HTTP/1.1" + MgrResponseCode.SUCCESS.getStatus() + "\r\n");
-        writer.println("Content-Type:" + MgrResponseCode.SUCCESS.getContentType() + "\r\n");
-        writer.println("Content-Length:" + body.length + "\r\n");
-        writer.println("\r\n");
+        writer.print("HTTP/1.1 " + MgrResponseCode.SUCCESS.getStatus() + " " + MgrResponseCode.SUCCESS.getMessage() + "\r\n");
+        writer.print("Content-Type:" + contentType + "\r\n");
+        writer.print("Content-Length:" + body.length + "\r\n");
+        writer.print("Connection: close\r\n");
+        writer.print("\r\n");
         writer.flush();
         try {
             out.write(body);
             out.flush();
         } catch (IOException e) {
-            System.out.println("Error writing to output stream: " + e.getMessage());
+            Log.error("Error writing response", e);
             throw new RuntimeException(e);
         }
     }
 
     public static void error(MgrResponseCode code, OutputStream out, byte[] body) {
         PrintWriter writer = new PrintWriter(out);
-        writer.println("HTTP/1.1" + code.getStatus() + "\r\n");
-        writer.println("Content-Type:" + code.getContentType() + "\r\n");
+        writer.println("HTTP/1.1 " + code.getStatus() + " " + code.getMessage() + "\r\n");
+        writer.println("Content-Type:" + code.getMessage() + "\r\n");
         writer.println("Content-Length:" + body.length + "\r\n");
         writer.println("\r\n");
         writer.flush();
@@ -38,7 +38,7 @@ public class MgrResponseDto {
             out.write(body);
             out.flush();
         } catch (IOException e) {
-            System.out.println("Error writing to output stream: " + e.getMessage());
+            Log.error("Error writing response", e);
             throw new RuntimeException(e);
         }
     }
