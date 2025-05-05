@@ -9,4 +9,4 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "✅ Compilation successful. Running the server..."
-java -cp src/main/java org.example.tenet.MyWebServer -document_root "./www" -port 8888
+java -cp src/main/java org.example.tenet.MyWebServer -document_root "./webSource" -port 8888

@@ -1,6 +1,18 @@
 1. compile and run
     javac src/main/java/org/example/tenet/*.java
-    java -cp src/main/java org.example.tenet.MyWebServer -document_root "./www" -port 8888
+    java -cp src/main/java org.example.tenet.MyWebServer -document_root "./webSource" -port 8888
 2. test
     telnet localhost 8888
     GET / HTTP/1.1
+    curl -v --http1.1 http://localhost:8888/index.html
+3. wget
+    wget --recursive \
+         --page-requisites \
+         --html-extension \
+         --convert-links \
+         --no-parent \
+         --adjust-extension \
+         --exclude-directories=/javascript,/js \
+         --directory-prefix=./ \
+         https://www.scu.edu/
+

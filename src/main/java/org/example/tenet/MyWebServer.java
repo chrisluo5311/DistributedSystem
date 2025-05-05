@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  *
@@ -17,6 +18,7 @@ public class MyWebServer {
 
     private static String docRoot;
     private static int port;
+    public static AtomicInteger activeConnections = new AtomicInteger(0);
 
     public static void main(String[] args) {
         // parse command line arguments
@@ -51,7 +53,7 @@ public class MyWebServer {
             while(true) {
                 // accept incoming connections
                 Socket clientSocket = socket.accept();
-                Log.info("Accepted connection from " + clientSocket.getRemoteSocketAddress());
+                Log.info("Accepted connection from " + clientSocket.getInetAddress());
                 ClientHandler clientHandler = new ClientHandler(clientSocket, docRoot);
                 new Thread(clientHandler).start();
             }

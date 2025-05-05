@@ -1,0 +1,54 @@
+[2025-05-04 16:58:48] [INFO] [Thread-1] Waiting for connection on port 8888...
+[2025-05-04 16:58:50] [INFO] [Thread-1] Accepted connection from /[0:0:0:0:0:0:0:1]:58957
+[2025-05-04 16:58:50] [INFO] [Thread-1] Accepted connection from /[0:0:0:0:0:0:0:1]:58958
+[2025-05-04 16:58:50] [INFO] [Thread-14] Received request: GET / HTTP/1.1
+[2025-05-04 16:58:50] [INFO] [Thread-14] Translating request path to /index.html
+[2025-05-04 16:58:50] [INFO] [Thread-14] Request file content type: text/html
+[2025-05-04 16:58:50] [INFO] [Thread-14] Response sent successfully
+[2025-05-04 16:58:50] [INFO] [Thread-14] Received request: GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1
+[2025-05-04 16:58:50] [INFO] [Thread-15] Received request: GET /testlogo.png HTTP/1.1
+[2025-05-04 16:58:50] [ERROR] [Thread-14] Not Found: request file './www/.well-known/appspecific/com.chrome.devtools.json' does not exist
+[2025-05-04 16:58:50] [INFO] [Thread-15] Request file content type: image/png
+[2025-05-04 16:58:50] [INFO] [Thread-15] Response sent successfully
+[2025-05-04 16:58:55] [INFO] [Thread-15] Socket timed out, closing connection
+[2025-05-04 17:13:24] [INFO] [Thread-1] Waiting for connection on port 8888...
+[2025-05-04 17:13:26] [INFO] [Thread-1] Accepted connection from /[0:0:0:0:0:0:0:1]:62633
+[2025-05-04 17:13:26] [INFO] [Thread-1] Accepted connection from /[0:0:0:0:0:0:0:1]:62634
+[2025-05-04 17:13:26] [INFO] [Thread-14] Setting timeout to 4s
+[2025-05-04 17:13:26] [INFO] [Thread-15] Setting timeout to 4s
+[2025-05-04 17:13:26] [INFO] [Thread-14] Received request: GET / HTTP/1.1
+[2025-05-04 17:13:26] [INFO] [Thread-14] Translating request path to /index.html
+[2025-05-04 17:13:26] [INFO] [Thread-14] Request file content type: text/html
+[2025-05-04 17:13:26] [INFO] [Thread-14] Response sent successfully
+[2025-05-04 17:13:26] [INFO] [Thread-14] Received request: GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1
+[2025-05-04 17:13:26] [INFO] [Thread-15] Received request: GET /testlogo.png HTTP/1.1
+[2025-05-04 17:13:26] [ERROR] [Thread-14] Not Found: request file './www/.well-known/appspecific/com.chrome.devtools.json' does not exist
+[2025-05-04 17:13:26] [INFO] [Thread-15] Request file content type: image/png
+[2025-05-04 17:13:26] [INFO] [Thread-15] Response sent successfully
+[2025-05-04 17:13:31] [INFO] [Thread-15] Current Thread's Socket timed out, closing connection
+[2025-05-04 17:15:51] [INFO] [Thread-1] Waiting for connection on port 8888...
+[2025-05-04 17:15:56] [INFO] [Thread-1] Accepted connection from /[0:0:0:0:0:0:0:1]:63263
+[2025-05-04 17:15:56] [INFO] [Thread-1] Accepted connection from /[0:0:0:0:0:0:0:1]:63264
+[2025-05-04 17:15:56] [INFO] [Thread-14] Setting timeout to 4750ms
+[2025-05-04 17:15:56] [INFO] [Thread-15] Setting timeout to 4500ms
+[2025-05-04 17:15:56] [INFO] [Thread-14] Received request: GET / HTTP/1.1
+[2025-05-04 17:15:56] [INFO] [Thread-14] Translating request path to /index.html
+[2025-05-04 17:15:56] [INFO] [Thread-14] Request file content type: text/html
+[2025-05-04 17:15:56] [INFO] [Thread-14] Response sent successfully
+[2025-05-04 17:15:56] [INFO] [Thread-14] Received request: GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1
+[2025-05-04 17:15:56] [INFO] [Thread-15] Received request: GET /testlogo.png HTTP/1.1
+[2025-05-04 17:15:56] [ERROR] [Thread-14] Not Found: request file './www/.well-known/appspecific/com.chrome.devtools.json' does not exist
+[2025-05-04 17:15:56] [INFO] [Thread-15] Request file content type: image/png
+[2025-05-04 17:15:56] [INFO] [Thread-15] Response sent successfully
+[2025-05-04 17:15:57] [INFO] [Thread-1] Accepted connection from /[0:0:0:0:0:0:0:1]:63269
+[2025-05-04 17:15:57] [INFO] [Thread-15] Received request: GET / HTTP/1.1
+[2025-05-04 17:15:57] [INFO] [Thread-16] Setting timeout to 4250ms
+[2025-05-04 17:15:57] [INFO] [Thread-15] Translating request path to /index.html
+[2025-05-04 17:15:57] [INFO] [Thread-15] Request file content type: text/html
+[2025-05-04 17:15:57] [INFO] [Thread-15] Response sent successfully
+[2025-05-04 17:15:57] [INFO] [Thread-15] Received request: GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1
+[2025-05-04 17:15:57] [INFO] [Thread-16] Received request: GET /testlogo.png HTTP/1.1
+[2025-05-04 17:15:57] [ERROR] [Thread-15] Not Found: request file './www/.well-known/appspecific/com.chrome.devtools.json' does not exist
+[2025-05-04 17:15:57] [INFO] [Thread-16] Request file content type: image/png
+[2025-05-04 17:15:57] [INFO] [Thread-16] Response sent successfully
+[2025-05-04 17:16:01] [INFO] [Thread-16] Current Thread's Socket timed out, closing connection

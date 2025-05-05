@@ -8,14 +8,19 @@ public class MgrResponseDto {
     private String status;
     private String contentType;
     private OutputStream out;
+    private boolean isConnectionClose;
     private byte[] body;
 
-    public static void success(OutputStream out, String contentType, byte[] body) {
+    public static void success(OutputStream out, String contentType, boolean isConnectionClose, byte[] body) {
         PrintWriter writer = new PrintWriter(out);
         writer.print("HTTP/1.1 " + MgrResponseCode.SUCCESS.getStatus() + " " + MgrResponseCode.SUCCESS.getMessage() + "\r\n");
         writer.print("Content-Type:" + contentType + "\r\n");
         writer.print("Content-Length:" + body.length + "\r\n");
-        writer.print("Connection: close\r\n");
+        if (isConnectionClose) {
+            writer.print("Connection: close\r\n");
+        } else {
+            writer.print("Connection: keep-alive\r\n");
+        }
         writer.print("\r\n");
         writer.flush();
         try {
@@ -32,6 +37,7 @@ public class MgrResponseDto {
         writer.println("HTTP/1.1 " + code.getStatus() + " " + code.getMessage() + "\r\n");
         writer.println("Content-Type:" + code.getMessage() + "\r\n");
         writer.println("Content-Length:" + body.length + "\r\n");
+        writer.println("Connection: close\r\n");
         writer.println("\r\n");
         writer.flush();
         try {
@@ -74,4 +80,11 @@ public class MgrResponseDto {
         this.body = body;
     }
 
+    public boolean getIsConnectionClose() {
+        return isConnectionClose;
+    }
+
+    public void setIsConnectionClose(boolean isConnectionClose) {
+        this.isConnectionClose = isConnectionClose;
+    }
 }
