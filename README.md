@@ -95,12 +95,13 @@ The project uses the `jslp` library to implement SLP functionality.
     4. Access the Web Server
          - Open a web browser and navigate to `http://localhost:8888/` to access the home page.
            This URL corresponds to the `index.html` file in the `webSource/` directory.
-         - To test `400.html`, use http://localhost:8888 POST
-         - To test readable `403.html`, first run `chmod 000 DistributedSystem/webSource/secret.html` to remove read, write, and execute permissions for everyone, then use http://localhost:8888/secret.html
-         - To test `404.html`, use http://localhost:8888/pokemon.html
-         - To test `500.html`, use http://localhost:8888/../secret.txt
-    5. Additional information
+         
+    5. Additional information—Log and Testing
        - Logs for server activities will be stored in the `tenet.log` file located in the project root.
+       - To test `400.html`, use http://localhost:8888 POST
+       - To test readable `403.html`, first run `chmod 000 DistributedSystem/webSource/secret.html` to remove read, write, and execute permissions for everyone, then use http://localhost:8888/secret.html
+       - To test `404.html`, use http://localhost:8888/pokemon.html
+       - To test `500.html`, use http://localhost:8888/../secret.txt
 
 6. Snapshots of my web browser
     
