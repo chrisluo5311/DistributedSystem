@@ -91,8 +91,6 @@ public class ClientHandler implements Runnable {
 
                 // check if the request file path is traversing outside the docRoot
                 File requestFile = new File(docRoot, requestPath);
-                System.out.println(requestFile.getCanonicalFile().toPath().toString());
-                System.out.println(new File(docRoot).getCanonicalPath().toString());
                 if (!requestFile.getCanonicalFile().toPath().startsWith(new File(docRoot).getCanonicalPath())) {
                     Log.error("Bad Request: request file path is traversing outside the docRoot");
                     MgrResponseDto.error(MgrResponseCode.FORBIDDEN, outputStream, getErrorPageToBytes(PAGE_FORBIDDEN));
