@@ -8,6 +8,10 @@ import java.nio.file.Files;
 public class ClientHandler implements Runnable {
     private final Socket clientSocket;
     private String docRoot;
+    private static final String BAD_REQUEST = "webSource/400.html";
+    private static final String PAGE_FORBIDDEN = "webSource/403.html";
+    private static final String PAGE_NOT_FOUND = "webSource/404.html";
+    private static final String INTERNAL_SERVER_ERROR = "webSource/500.html";
 
     public ClientHandler(Socket socket, String docRoot) {
         this.clientSocket = socket;
@@ -16,13 +20,19 @@ public class ClientHandler implements Runnable {
 
     // simple heuristic to determine timeout based on active connections
     private int getTimeoutBasedOnRequest(int activeConnections) {
-        int defaultTimeout = 5000; // 5 seconds
+        int defaultTimeout = 10000; // 5 seconds
         int minTimeout = 2000; // 2 seconds
         int maxConnections = 30;
 
         double ratio = (double) activeConnections / maxConnections;
         int timeout = (int) (defaultTimeout * (1 - ratio));
         return Math.max(minTimeout, timeout);
+    }
+
+    private byte[] getErrorPageToBytes(String errorPageFilePath) throws IOException {
+        File errorPage = new File(errorPageFilePath);
+        String defaultErrorPage = "<h1>404 Not Found</h1>";
+        return errorPage.exists()? Files.readAllBytes(errorPage.toPath()) : defaultErrorPage.getBytes();
     }
 
     @Override
@@ -47,9 +57,11 @@ public class ClientHandler implements Runnable {
                 Log.info("Received request: " + request);
                 // Parse the request like GET /index.html HTTP/1.1
                 String[] requestParts = request.split(" ");
-                if (requestParts.length < 2) {
+                if (requestParts.length < 3) {
                     Log.error("Bad Request: no other Request arguments");
-                    MgrResponseDto.error(MgrResponseCode.BAD_REQUEST, outputStream, "Bad Request: please specify Request arguments".getBytes());
+                    MgrResponseDto.error(MgrResponseCode.BAD_REQUEST,
+                            outputStream,
+                            getErrorPageToBytes(BAD_REQUEST));
                     return;
                 }
                 // translate 'GET /' to 'GET /index.html'
@@ -59,7 +71,7 @@ public class ClientHandler implements Runnable {
 
                 if (!requestMethod.equals("GET")){
                     Log.error("Bad Request: request is not a GET request");
-                    MgrResponseDto.error(MgrResponseCode.BAD_REQUEST, outputStream, "Bad Request: use GET".getBytes());
+                    MgrResponseDto.error(MgrResponseCode.BAD_REQUEST, outputStream, getErrorPageToBytes(BAD_REQUEST));
                     return;
                 }
 
@@ -79,21 +91,23 @@ public class ClientHandler implements Runnable {
 
                 // check if the request file path is traversing outside the docRoot
                 File requestFile = new File(docRoot, requestPath);
+                System.out.println(requestFile.getCanonicalFile().toPath().toString());
+                System.out.println(new File(docRoot).getCanonicalPath().toString());
                 if (!requestFile.getCanonicalFile().toPath().startsWith(new File(docRoot).getCanonicalPath())) {
                     Log.error("Bad Request: request file path is traversing outside the docRoot");
-                    MgrResponseDto.error(MgrResponseCode.FORBIDDEN, outputStream, "Forbidden".getBytes());
+                    MgrResponseDto.error(MgrResponseCode.FORBIDDEN, outputStream, getErrorPageToBytes(PAGE_FORBIDDEN));
                     return;
                 }
 
                 // check if the file exists
                 if (!requestFile.exists()) {
                     Log.error("Not Found: request file '"+ requestFile.getPath() +"' does not exist");
-                    MgrResponseDto.error(MgrResponseCode.NOT_FOUND, outputStream, "Not Found".getBytes());
+                    MgrResponseDto.error(MgrResponseCode.NOT_FOUND, outputStream, getErrorPageToBytes(PAGE_NOT_FOUND));
                     return;
                 } else if (!requestFile.canRead()) {
                     // check if the file is readable
                     Log.error("Forbidden: request file is not readable");
-                    MgrResponseDto.error(MgrResponseCode.FORBIDDEN, outputStream, "Forbidden".getBytes());
+                    MgrResponseDto.error(MgrResponseCode.FORBIDDEN, outputStream, getErrorPageToBytes(PAGE_FORBIDDEN));
                 } else {
                     // check the file type and send responses
                     String contentType = Files.probeContentType(requestFile.toPath());
@@ -110,13 +124,16 @@ public class ClientHandler implements Runnable {
         } catch (SocketTimeoutException e) {
             Log.info("Current Thread's Socket timed out, closing connection");
             System.out.println("Current Thread-" + Thread.currentThread().getId() +" Socket timed out");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             Log.error("Error handling request: " + e.getMessage());
             System.err.println("Error handling response:" + e.getMessage());
+        } catch (Exception e) {
+            Log.error("Unexpected error: " + e.getMessage());
+            System.err.println("Unexpected error: " + e.getMessage());
         } finally {
             try {
                 clientSocket.close();
+                Log.info("Connection closed");
             } catch (IOException e) {
                 Log.error("Error closing socket: " + e.getMessage());
                 System.err.println("Error closing socket: " + e.getMessage());

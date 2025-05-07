@@ -3,15 +3,16 @@ package org.example.tenet;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketTimeoutException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  *
- *  #TODO
- *  You have to go to the root that contains src file to run the command line
- *  1. Compile the code 2. Run the command
- *  java -cp src/main/java org.example.tenet.MyWebServer -document_root "/home/you/files" -port 8888
+ * @Author JI-DUNG, LO
+ *  Go to the document root that contains the src file and run the below two command lines
+ *  1. Compile the code
+ *      javac src/main/java/org/example/tenet/*.java
+ *  2. Run the command
+ *      java -cp src/main/java org.example.tenet.MyWebServer -document_root "./webSource" -port 8888
  *
  * */
 public class MyWebServer {
@@ -59,7 +60,6 @@ public class MyWebServer {
             }
         } catch (IOException e) {
             System.err.println("Error initializing socket: " + e.getMessage());
-            e.printStackTrace();
         }
 
     }

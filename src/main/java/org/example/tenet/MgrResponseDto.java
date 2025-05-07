@@ -34,11 +34,11 @@ public class MgrResponseDto {
 
     public static void error(MgrResponseCode code, OutputStream out, byte[] body) {
         PrintWriter writer = new PrintWriter(out);
-        writer.println("HTTP/1.1 " + code.getStatus() + " " + code.getMessage() + "\r\n");
-        writer.println("Content-Type:" + code.getMessage() + "\r\n");
-        writer.println("Content-Length:" + body.length + "\r\n");
-        writer.println("Connection: close\r\n");
-        writer.println("\r\n");
+        writer.print("HTTP/1.1 " + code.getStatus() + " " + code.getMessage() + "\r\n");
+        writer.print("Content-Type: text/html\r\n");
+        writer.print("Content-Length:" + body.length + "\r\n");
+        writer.print("Connection: close\r\n");
+        writer.print("\r\n");
         writer.flush();
         try {
             out.write(body);

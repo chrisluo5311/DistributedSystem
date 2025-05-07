@@ -5,14 +5,25 @@
     telnet localhost 8888
     GET / HTTP/1.1
     curl -v --http1.1 http://localhost:8888/index.html
+2.1 test fail
+        GET /../secret.txt HTTP/1.1
 3. wget
-    wget --recursive \
-         --page-requisites \
-         --html-extension \
-         --convert-links \
-         --no-parent \
-         --adjust-extension \
-         --exclude-directories=/javascript,/js \
-         --directory-prefix=./ \
-         https://www.scu.edu/
-
+wget --convert-links \
+     --page-requisites \
+     --no-host-directories \
+     --directory-prefix=. \
+     --domains=scu.edu \
+     --span-hosts \
+     --accept=html,jpg,jpeg,png,gif,css,js \
+     --no-parent \
+     --level=1 \
+     https://www.scu.edu/
+For specific images:
+wget -P . https://www.scu.edu/media/institutional-pages/news-amp-events/Riley-Carpenter-1160x733-1160x732.gif
+wget -P . https://www.scu.edu/media/institutional-pages/news-amp-events/Kristin-Hill-760-1120x707.jpg
+wget -P . https://www.scu.edu/media/institutional-pages/news-amp-events/ChrisHarris_OMLAnniversary-1160x733.png
+wget -P . https://www.scu.edu/media/institutional-pages/news-amp-events/[1160]-20250414_Prajit_Saravanan_JG_063-1160x733.jpg
+wget -P . https://www.scu.edu/media/institutional-pages/news-amp-events/ashwin-vaswani-55k45BgfUF8-unsplash-1-760x480.jpg
+wget -P . https://www.scu.edu/media/institutional-pages/news-amp-events/image8-760x480.jpg
+wget -P . https://www.scu.edu/media/institutional-pages/news-amp-events/pamela-buenrostro-up8Clkcy73U-unsplash-760x480.jpg
+wget -P . https://www.scu.edu/media/offices/umc/web-design/scu-campus-transformed_img-web.jpg
