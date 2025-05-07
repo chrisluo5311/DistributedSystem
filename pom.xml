@@ -15,21 +15,6 @@
     </properties>
 
     <dependencies>
-        <!-- jslp test -->
-        <!--    <dependency>-->
-        <!--      <groupId>net.sourceforge.jslp</groupId>-->
-        <!--      <artifactId>jslp</artifactId>-->
-        <!--      <version>1.0.0.RC5</version>-->
-        <!--      <scope>system</scope>-->
-        <!--      <systemPath>${project.basedir}/lib/jslp-1.0.0.RC5.jar</systemPath>-->
-        <!--    </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>com.rabbitmq</groupId>-->
-        <!--            <artifactId>amqp-client</artifactId>-->
-        <!--            <version>5.10.0</version>-->
-        <!--            <scope>compile</scope>-->
-        <!--        </dependency>-->
     </dependencies>
     <build>
         <plugins>
