@@ -27,3 +27,7 @@ wget -P . https://www.scu.edu/media/institutional-pages/news-amp-events/ashwin-v
 wget -P . https://www.scu.edu/media/institutional-pages/news-amp-events/image8-760x480.jpg
 wget -P . https://www.scu.edu/media/institutional-pages/news-amp-events/pamela-buenrostro-up8Clkcy73U-unsplash-760x480.jpg
 wget -P . https://www.scu.edu/media/offices/umc/web-design/scu-campus-transformed_img-web.jpg
+
+4. Change secret.html read permission
+chmod 000 DistributedSystem/webSource/secret.html
+chmod 644 DistributedSystem/webSource/secret.html
