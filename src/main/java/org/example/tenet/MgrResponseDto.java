@@ -11,9 +11,9 @@ public class MgrResponseDto {
     private boolean isConnectionClose;
     private byte[] body;
 
-    public static void success(OutputStream out, String contentType, boolean isConnectionClose, byte[] body) {
+    public static void success(OutputStream out, String contentType, boolean isConnectionClose, byte[] body, String httpVersion) {
         PrintWriter writer = new PrintWriter(out);
-        writer.print("HTTP/1.1 " + MgrResponseCode.SUCCESS.getStatus() + " " + MgrResponseCode.SUCCESS.getMessage() + "\r\n");
+        writer.print(httpVersion + MgrResponseCode.SUCCESS.getStatus() + " " + MgrResponseCode.SUCCESS.getMessage() + "\r\n");
         writer.print("Content-Type:" + contentType + "\r\n");
         writer.print("Content-Length:" + body.length + "\r\n");
         if (isConnectionClose) {

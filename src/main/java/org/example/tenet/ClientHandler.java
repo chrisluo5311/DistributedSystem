@@ -112,10 +112,13 @@ public class ClientHandler implements Runnable {
                     Log.info("Request file content type: " + contentType);
                     byte[] fileBytes = Files.readAllBytes(requestFile.toPath());
                     if (httpVersion.equals("HTTP/1.0")) {
+                        // connection is usually closed after the response
+                        // but just in case, so set isConnectionClose to false
                         isConnectionClose = false;
+                        // HTTP/1.0 does not support keep-alive
                         keepAlive = false;
                     }
-                    MgrResponseDto.success(outputStream, contentType, isConnectionClose, fileBytes);
+                    MgrResponseDto.success(outputStream, contentType, isConnectionClose, fileBytes, httpVersion);
                     Log.info("Response sent successfully");
                 }
             }

@@ -1,0 +1,37 @@
+[2025-05-15 10:17:17] [INFO] [Thread-1] Waiting for connection on port 8888...
+[2025-05-15 10:17:22] [INFO] [Thread-1] Accepted connection from /0:0:0:0:0:0:0:1
+[2025-05-15 10:17:22] [INFO] [Thread-14] Setting timeout to 9666ms
+[2025-05-15 10:17:32] [INFO] [Thread-14] Current Thread's Socket timed out, closing connection
+[2025-05-15 10:17:32] [INFO] [Thread-14] Connection closed
+[2025-05-15 10:17:36] [INFO] [Thread-1] Accepted connection from /0:0:0:0:0:0:0:1
+[2025-05-15 10:17:36] [INFO] [Thread-15] Setting timeout to 9333ms
+[2025-05-15 10:17:43] [INFO] [Thread-15] Received request: GET / HTTP/1.1
+[2025-05-15 10:17:43] [INFO] [Thread-15] Translating request path to /index.html
+[2025-05-15 10:17:53] [INFO] [Thread-15] Current Thread's Socket timed out, closing connection
+[2025-05-15 10:17:53] [INFO] [Thread-15] Connection closed
+[2025-05-15 10:20:53] [INFO] [Thread-1] Accepted connection from /0:0:0:0:0:0:0:1
+[2025-05-15 10:20:53] [INFO] [Thread-16] Setting timeout to 9000ms
+[2025-05-15 10:20:54] [INFO] [Thread-16] Received request: GET / HTTP/1.1
+[2025-05-15 10:20:54] [INFO] [Thread-16] Translating request path to /index.html
+[2025-05-15 10:20:58] [INFO] [Thread-16] Request file content type: text/html
+[2025-05-15 10:20:58] [INFO] [Thread-16] Response sent successfully
+[2025-05-15 10:21:07] [INFO] [Thread-16] Current Thread's Socket timed out, closing connection
+[2025-05-15 10:21:07] [INFO] [Thread-16] Connection closed
+[2025-05-15 10:25:38] [INFO] [Thread-1] Accepted connection from /0:0:0:0:0:0:0:1
+[2025-05-15 10:25:38] [INFO] [Thread-17] Setting timeout to 8666ms
+[2025-05-15 10:25:40] [INFO] [Thread-17] Received request:    GET / HTTP/1.1
+[2025-05-15 10:25:40] [ERROR] [Thread-17] Bad Request: request is not a GET request
+[2025-05-15 10:25:40] [INFO] [Thread-17] Connection closed
+[2025-05-15 10:25:45] [INFO] [Thread-1] Accepted connection from /0:0:0:0:0:0:0:1
+[2025-05-15 10:25:45] [INFO] [Thread-18] Setting timeout to 8333ms
+[2025-05-15 10:25:51] [INFO] [Thread-18] Received request:    GET / HTTP/1.1
+[2025-05-15 10:25:51] [ERROR] [Thread-18] Bad Request: request is not a GET request
+[2025-05-15 10:25:51] [INFO] [Thread-18] Connection closed
+[2025-05-15 10:26:03] [INFO] [Thread-1] Accepted connection from /0:0:0:0:0:0:0:1
+[2025-05-15 10:26:03] [INFO] [Thread-19] Setting timeout to 8000ms
+[2025-05-15 10:26:06] [INFO] [Thread-19] Received request: GET / HTTP/1.1
+[2025-05-15 10:26:06] [INFO] [Thread-19] Translating request path to /index.html
+[2025-05-15 10:26:07] [INFO] [Thread-19] Request file content type: text/html
+[2025-05-15 10:26:07] [INFO] [Thread-19] Response sent successfully
+[2025-05-15 10:26:15] [INFO] [Thread-19] Current Thread's Socket timed out, closing connection
+[2025-05-15 10:26:15] [INFO] [Thread-19] Connection closed
